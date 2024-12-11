@@ -1,29 +1,27 @@
-# Lambda Patreon Integration
+# Lambda Patreon + Google Sheets Integration
 
 ## Overview
 
-This project is a serverless application that automatically retrieves and shares the latest posts from a Patreon campaign on Twitter and Discord. It’s built using AWS Lambda triggered by CloudWatch event. By integrating with the Patreon API, Twitter API, and Discord API, the application automates the process of sharing new campaign posts with followers across platforms.
+This project is a serverless application designed to automate the retrieval of impression count data from all posts in a Patreon campaign and store the data in a Google Sheets document saved to Google Drive.
 
 ## Functionality
 
-The application performs several key functions:
+The application performs the following key functions:
 
 1. **Fetch Patreon Posts**  
-   The application uses the Patreon API to retrieve recent posts from a specified campaign. It filters posts based on the current date to identify and prepare only the most recent updates for sharing.
+   Retrieves all posts from a specified Patreon campaign using the Patreon API, focusing exclusively on `impression_counts` data.
 
-2. **Create a Formatted Message**  
-   Once new posts are identified, they are combined into a single, formatted message. This message includes post titles and URLs, as well as predefined text and emojis to maintain consistency and engagement across platforms.
+2. **Generate Google Sheet**  
+   Consolidates the `impression_counts` data and generates a new Google Sheet, storing the processed data in a structured format.
 
-3. **Post to Twitter and Discord**
-
-   - **Twitter**: The function authenticates with Twitter’s API using OAuth 1.0a and posts the formatted message as a tweet.
-   - **Discord**: Using the Discord Bot API, the function posts the same message to a designated Discord channel, notifying followers of the latest updates.
+3. **Save to Google Drive**  
+   Saves the generated Google Sheet to a specific Google Drive folder, as specified by the folder ID.
 
 4. **Error Handling and Logging**  
-   Errors encountered during API calls (e.g., failed authentication or posting issues) are logged to AWS CloudWatch, providing traceability and supporting troubleshooting.
+   Logs errors encountered during API calls (e.g., authentication failures or data submission issues) to AWS CloudWatch, enabling traceability and troubleshooting.
 
 ## Usage
 
-This Lambda function is triggered on a set schedule, capturing the latest campaign content daily. Users can customize the posting schedule by updating the configuration in the AWS console.
+This Lambda function is triggered on a daily schedule, ensuring the latest `impression_counts` from all posts are captured and saved. Users can adjust the trigger schedule by modifying the configuration in the AWS Management Console.
 
 ---
