@@ -24,4 +24,6 @@ The application performs the following key functions:
 
 This Lambda function is triggered on a daily schedule, ensuring the latest `impression_counts` from all posts are captured and saved. Users can adjust the trigger schedule by modifying the configuration in the AWS Management Console.
 
----
+## Setup & Deployment
+
+I will update here real soon!
