@@ -33,4 +33,4 @@ def lambda_handler(event, context):
         print(f"Error occurred: {str(e)}")
 
 # Test the lambda_handler function
-lambda_handler("", "")
+# lambda_handler("", "")
